@@ -1,9 +1,5 @@
-﻿using LibeyTechnicalTestDomain.DocumentTypeAggregate.Domain;
-using LibeyTechnicalTestDomain.EFCore.Configuration;
+﻿using LibeyTechnicalTestDomain.EFCore.Configuration;
 using LibeyTechnicalTestDomain.LibeyUserAggregate.Domain;
-using LibeyTechnicalTestDomain.ProvinceAggregate.Domain;
-using LibeyTechnicalTestDomain.RegionAggregate.Domain;
-using LibeyTechnicalTestDomain.UbigeoAggregate.Domain;
 using Microsoft.EntityFrameworkCore;
 namespace LibeyTechnicalTestDomain.EFCore
 {

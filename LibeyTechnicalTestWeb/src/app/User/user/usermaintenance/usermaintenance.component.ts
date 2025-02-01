@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsermaintenanceComponent implements OnInit {
   constructor() { }
-  ngOnInit(): void {}
-  Submit(){
+  ngOnInit(): void { }
+  Submit() {
     swal.fire("Oops!", "Something went wrong!", "error");
   }
 }

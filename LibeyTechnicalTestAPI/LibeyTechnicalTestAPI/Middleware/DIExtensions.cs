@@ -1,22 +1,6 @@
-﻿using LibeyTechnicalTestDomain.DocumentTypeAggregate.Application;
-using LibeyTechnicalTestDomain.DocumentTypeAggregate.Application.Interfaces;
-using LibeyTechnicalTestDomain.DocumentTypeAggregate.Infrastructure;
-
-using LibeyTechnicalTestDomain.LibeyUserAggregate.Application;
+﻿using LibeyTechnicalTestDomain.LibeyUserAggregate.Application;
 using LibeyTechnicalTestDomain.LibeyUserAggregate.Application.Interfaces;
 using LibeyTechnicalTestDomain.LibeyUserAggregate.Infrastructure;
-
-using LibeyTechnicalTestDomain.ProvinceAggregate.Application;
-using LibeyTechnicalTestDomain.ProvinceAggregate.Application.Interfaces;
-using LibeyTechnicalTestDomain.ProvinceAggregate.Infrastructure;
-
-using LibeyTechnicalTestDomain.RegionAggregate.Application;
-using LibeyTechnicalTestDomain.RegionAggregate.Application.Interfaces;
-using LibeyTechnicalTestDomain.RegionAggregate.Infrastructure;
-
-using LibeyTechnicalTestDomain.UbigeoAggregate.Application;
-using LibeyTechnicalTestDomain.UbigeoAggregate.Application.Interfaces;
-using LibeyTechnicalTestDomain.UbigeoAggregate.Infrastructure;
 
 namespace LibeyTechnicalTestAPI.Middleware
 {

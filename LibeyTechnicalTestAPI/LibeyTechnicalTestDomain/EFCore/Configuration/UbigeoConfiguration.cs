@@ -1,4 +1,4 @@
-﻿using LibeyTechnicalTestDomain.UbigeoAggregate.Domain;
+﻿using LibeyTechnicalTestDomain.LibeyUserAggregate.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace LibeyTechnicalTestDomain.EFCore.Configuration

@@ -1,4 +1,4 @@
-﻿using LibeyTechnicalTestDomain.DocumentTypeAggregate.Application.Interfaces;
+﻿using LibeyTechnicalTestDomain.LibeyUserAggregate.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibeyTechnicalTestAPI.Controllers.DocumentType

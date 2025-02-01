@@ -1,4 +1,4 @@
-﻿using LibeyTechnicalTestDomain.UbigeoAggregate.Application.Interfaces;
+﻿using LibeyTechnicalTestDomain.LibeyUserAggregate.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibeyTechnicalTestAPI.Controllers.Ubigeo

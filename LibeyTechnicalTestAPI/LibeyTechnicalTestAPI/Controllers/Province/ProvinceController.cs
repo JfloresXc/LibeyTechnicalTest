@@ -1,4 +1,4 @@
-﻿using LibeyTechnicalTestDomain.ProvinceAggregate.Application.Interfaces;
+﻿using LibeyTechnicalTestDomain.LibeyUserAggregate.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibeyTechnicalTestAPI.Controllers.Province

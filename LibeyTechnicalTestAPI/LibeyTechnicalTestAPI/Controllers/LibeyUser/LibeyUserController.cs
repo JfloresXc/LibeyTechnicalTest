@@ -1,6 +1,7 @@
 ﻿using LibeyTechnicalTestDomain.LibeyUserAggregate.Application.DTO;
 using LibeyTechnicalTestDomain.LibeyUserAggregate.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 namespace LibeyTechnicalTestAPI.Controllers.LibeyUser
 {
     [ApiController]
@@ -16,46 +17,95 @@ namespace LibeyTechnicalTestAPI.Controllers.LibeyUser
         [HttpGet]
         public IActionResult ListAll()
         {
-            var rows = _aggregate.ListAll();
-            return Ok(rows);
+            try
+            {
+                List<LibeyUserResponse> rows = _aggregate.ListAll();
+                var response = new ApiResponse<List<LibeyUserResponse>>(rows, "Data retrieved successfully", true);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving data" + ex.Message);
+            }
         }
 
         [HttpGet]
         [Route("{documentNumber}")]
         public IActionResult FindResponse(string documentNumber)
         {
-            var row = _aggregate.FindResponse(documentNumber);
-            return Ok(row);
+            try
+            {
+                var row = _aggregate.FindResponse(documentNumber);
+                var response = new ApiResponse<object>(row, "Data retrieved successfully", true);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving data" + ex.Message);
+            }
+
         }
 
         [HttpPost]       
         public IActionResult Create(UserUpdateorCreateCommand command)
         {
-             _aggregate.Create(command);
-            return Ok(true);
+            try
+            {
+                _aggregate.Create(command);
+                var response = new ApiResponse<object>(null, "Data added successfully", true);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving data" + ex.Message);
+            }
         }
 
         [HttpDelete]
         [Route("{documentNumber}")]
-        public IActionResult Update(string documentNumber)
+        public IActionResult Delete(string documentNumber)
         {
-            _aggregate.Delete(documentNumber);
-            return Ok(true);
+            try
+            {
+                _aggregate.Delete(documentNumber);
+                var response = new ApiResponse<object>(null, "Data deleted successfully", true);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving data" + ex.Message);
+            }
         }
 
         [HttpPut]
         public IActionResult Update(UserUpdateorCreateCommand command)
         {
-            _aggregate.Update(command);
-            return Ok(true);
+            try
+            {
+                _aggregate.Update(command);
+                var response = new ApiResponse<object>(null, "Data updated successfully", true);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving data" + ex.Message);
+            }
         }
 
-        [HttpPut]
+        [HttpGet]
         [Route("{documentNumber}/{isActived}")]
         public IActionResult ToggleActive(string documentNumber, bool isActived)
         {
-            _aggregate.ToggleActive(documentNumber, isActived);
-            return Ok(true);
+            try
+            {
+                _aggregate.ToggleActive(documentNumber, isActived);
+                var response = new ApiResponse<object>(null, "State active toggled successfully", true);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving data" + ex.Message);
+            }
         }
     }
 }

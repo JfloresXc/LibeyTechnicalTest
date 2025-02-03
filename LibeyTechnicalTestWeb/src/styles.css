@@ -17,3 +17,7 @@
 .d-flex {
 	display: flex !important;
 }
+
+body{
+	min-height: 100vh;
+}

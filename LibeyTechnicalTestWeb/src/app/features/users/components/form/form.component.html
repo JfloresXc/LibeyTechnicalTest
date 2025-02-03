@@ -1,0 +1,116 @@
+<form [formGroup]="userForm" (ngSubmit)="submit()">
+	<div class="card">
+		<div class="card-header">
+			Editar
+		</div>
+		<div class="card-body">
+			<div class="row pb-2 pr-2">
+				<div class="col-lg-2">Tipo de documento</div>
+				<div class="col-lg-4">
+					<ng-select placeholder="Seleccione" class="ng-select-solid" formControlName="documentTypeId"
+						required>
+						<ng-option *ngFor="
+							let item of documentTypes;
+							let i = index;" value="{{item.documentTypeId}}">{{item.documentTypeDescription}}</ng-option>
+					</ng-select>
+				</div>
+				<div class="col-lg-2">Número de documento</div>
+				<div class="col-lg-4"><input formControlName="documentNumber" type="text"
+						class="form-control form-control-sm" />
+				</div>
+			</div>
+			<div class="row pb-2">
+				<div class="col-lg-2">Nombre</div>
+				<div class="col-lg-4"><input formControlName="name" type="text" class="form-control form-control-sm" />
+				</div>
+				<div class="col-lg-2">Apellido Paterno</div>
+				<div class="col-lg-4"><input formControlName="fathersLastName" type="text"
+						class="form-control form-control-sm" /></div>
+			</div>
+			<div class="row pb-2">
+				<div class="col-lg-2">Apellido Materno</div>
+				<div class="col-lg-4"><input formControlName="mothersLastName" type="text"
+						class="form-control form-control-sm" /></div>
+				<div class="col-lg-2">Dirección</div>
+				<div class="col-lg-4"><input type="text" formControlName="address"
+						class="form-control form-control-sm" /></div>
+			</div>
+			<div class="row pb-2">
+				<div class="col-lg-2">Departamento</div>
+				<div class="col-lg-4">
+					<ng-select placeholder="Seleccione" formControlName="regionCode" class="ng-select-solid"
+						name="CreditDebitNoteReasonTypeId" (change)="changeRegion($event)" required>
+						<ng-option *ngFor="
+							let item of regions;" value="{{item.regionCode}}">{{item.regionDescription}}</ng-option>
+					</ng-select>
+				</div>
+				<div class="col-lg-2">Provincia</div>
+				<div class="col-lg-4">
+					<ng-select placeholder="Seleccione" formControlName="provinceCode" class="ng-select-solid"
+						name="CreditDebitNoteReasonTypeId" (change)="changeProvince($event)" required>
+						<ng-option *ngFor="
+							let item of provincesUI;" value="{{item.provinceCode}}">{{item.provinceDescription}}</ng-option>
+					</ng-select>
+				</div>
+			</div>
+			<div class="row pb-2">
+				<div class="col-lg-2">Distrito</div>
+				<div class="col-lg-4">
+					<ng-select placeholder="Seleccione" formControlName="ubigeoCode" class="ng-select-solid"
+						name="CreditDebitNoteReasonTypeId" required>
+						<ng-option *ngFor="
+							let item of ubigeosUI;" value="{{item.ubigeoCode}}">{{item.ubigeoDescription}}</ng-option>
+					</ng-select>
+				</div>
+				<div class="col-lg-2">Telefono</div>
+				<div class="col-lg-4"><input type="text" formControlName="phone" class="form-control form-control-sm" />
+				</div>
+			</div>
+			<div class="row pb-2">
+				<div class="col-lg-2">Correo</div>
+				<div class="col-lg-4"><input type="email" formControlName="email"
+						class="form-control form-control-sm" /></div>
+				<div class="col-lg-2">Contraseña</div>
+				<div class="col-lg-4"><input type="password" formControlName="password"
+						class="form-control form-control-sm" /></div>
+			</div>
+			<div class="row pb-2">
+				<div class="col-lg-2">Confirmar contraseña</div>
+				<div class="col-lg-4"><input type="password" formControlName="confirmedPassword"
+						class="form-control form-control-sm" /></div>
+			</div>
+		</div>
+		<div class="card-footer mt-4">
+			<ul class="nav d-flex justify-content-end">
+				<button type="submit" class="btn-toolbar" [disabled]="!userForm.valid">
+					<a class="nav-link text-toolbar">
+						<span>
+							<svg width="20" height="17" viewBox="0 0 14 14" fill="none">
+								<path
+									d="M11.6667 1H2.33333C1.59695 1 1 1.59695 1 2.33333V11.6667C1 12.403 1.59695 13 2.33333 13H11.6667C12.403 13 13 12.403 13 11.6667V2.33333C13 1.59695 12.403 1 11.6667 1Z"
+									stroke="#38E8C6" stroke-linecap="round" stroke-linejoin="round" />
+								<path d="M1 5H13" stroke="#38E8C6" stroke-linecap="round" stroke-linejoin="round" />
+								<path d="M5 13V5" stroke="#38E8C6" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+						</span>
+						Guardar
+					</a>
+				</button>
+				<button type="button" class="btn-toolbar" (click)="clearForm()">
+					<a class="nav-link text-toolbar">
+						<span>
+							<svg width="20" height="17" viewBox="0 0 14 14" fill="none">
+								<path
+									d="M11.6667 1H2.33333C1.59695 1 1 1.59695 1 2.33333V11.6667C1 12.403 1.59695 13 2.33333 13H11.6667C12.403 13 13 12.403 13 11.6667V2.33333C13 1.59695 12.403 1 11.6667 1Z"
+									stroke="#38E8C6" stroke-linecap="round" stroke-linejoin="round" />
+								<path d="M1 5H13" stroke="#38E8C6" stroke-linecap="round" stroke-linejoin="round" />
+								<path d="M5 13V5" stroke="#38E8C6" stroke-linecap="round" stroke-linejoin="round" />
+							</svg>
+						</span>
+						Limpiar
+					</a>
+				</button>
+			</ul>
+		</div>
+	</div>
+</form>

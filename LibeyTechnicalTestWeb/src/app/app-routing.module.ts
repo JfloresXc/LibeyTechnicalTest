@@ -1,25 +1,29 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AppComponent } from "./app.component";
-import { UsercardsComponent } from "./User/user/usercards/usercards.component";
-import { UsermaintenanceComponent } from "./User/user/usermaintenance/usermaintenance.component";
+import { PageListOfUsersComponent } from "./features/users/pages/list/list.component";
+import { PageAddUserComponent } from "./features/users/pages/add/add.component";
+import { PageUpdateUserComponent } from "./features/users/pages/update/update.component";
+
 const routes: Routes = [
 	{
 		path: "",
-		redirectTo: "/user",
+		redirectTo: "/user/list",
 		pathMatch: "full",
 	},
 	{
 		path: "user",
 		children: [
-			{ path: "card", component: UsercardsComponent },
-			{ path: "maintenance", component: UsermaintenanceComponent },
+			{ path: "add", component: PageAddUserComponent },
+			{ path: "list", component: PageListOfUsersComponent },
+			{ path: "update/:documentNumber", component: PageUpdateUserComponent }
 		],
 	},
 	{ path: "**", component: AppComponent },
 ];
+
 @NgModule({
 	imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

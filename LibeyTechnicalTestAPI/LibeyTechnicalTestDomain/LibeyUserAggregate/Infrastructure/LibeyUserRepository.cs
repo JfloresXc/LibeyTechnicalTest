@@ -27,16 +27,39 @@ namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Infrastructure
                 IQueryable<LibeyUserResponse> query = from libeyUser in _context.LibeyUsers.Where(x => x.DocumentNumber.Equals(documentNumber))
                                                       select new LibeyUserResponse()
                                                       {
-                                                          DocumentNumber = libeyUser.DocumentNumber,
-                                                          Active = libeyUser.Active,
-                                                          Address = libeyUser.Address,
-                                                          DocumentTypeId = libeyUser.DocumentTypeId,
-                                                          Email = libeyUser.Email,
-                                                          FathersLastName = libeyUser.FathersLastName,
-                                                          MothersLastName = libeyUser.MothersLastName,
-                                                          Name = libeyUser.Name,
-                                                          Password = libeyUser.Password,
-                                                          Phone = libeyUser.Phone
+                                                         DocumentNumber = libeyUser.DocumentNumber,
+                                                         Active = libeyUser.Active,
+                                                         Address = libeyUser.Address,
+                                                         DocumentTypeId = libeyUser.DocumentTypeId,
+                                                         DocumentTypeDescription = (
+                                                            from documentType in _context.DocumentTypes
+                                                            where documentType.DocumentTypeId == libeyUser.DocumentTypeId
+                                                            select documentType.DocumentTypeDescription
+                                                        ).FirstOrDefault() ?? "",
+                                                         Email = libeyUser.Email,
+                                                         FathersLastName = libeyUser.FathersLastName,
+                                                         MothersLastName = libeyUser.MothersLastName,
+                                                         Name = libeyUser.Name,
+                                                         Password = libeyUser.Password,
+                                                         Phone = libeyUser.Phone,
+                                                         UbigeoCode = libeyUser.UbigeoCode,
+                                                         UbigeoDescription = (
+                                                            from ubigeo in _context.Ubigeos
+                                                            where ubigeo.UbigeoCode == libeyUser.UbigeoCode
+                                                            select ubigeo.UbigeoDescription
+                                                        ).FirstOrDefault() ?? "",
+                                                         ProvinceCode = libeyUser.UbigeoCode.Substring(0, 4),
+                                                         ProvinceDescription = (
+                                                            from province in _context.Provinces
+                                                            where province.ProvinceCode == libeyUser.UbigeoCode.Substring(0, 4)
+                                                            select province.ProvinceDescription
+                                                        ).FirstOrDefault() ?? "",
+                                                         RegionCode = libeyUser.UbigeoCode.Substring(0, 2),
+                                                         RegionDescription = (
+                                                            from region in _context.Regions
+                                                            where region.RegionCode == libeyUser.UbigeoCode.Substring(0, 2)
+                                                            select region.RegionDescription
+                                                        ).FirstOrDefault() ?? "",
                                                       };
                 List<LibeyUserResponse> list = query.ToList();
 
@@ -60,6 +83,11 @@ namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Infrastructure
                                                      Active = libeyUser.Active,
                                                      Address = libeyUser.Address,
                                                      DocumentTypeId = libeyUser.DocumentTypeId,
+                                                     DocumentTypeDescription = (
+                                                        from documentType in _context.DocumentTypes
+                                                        where documentType.DocumentTypeId == libeyUser.DocumentTypeId
+                                                        select documentType.DocumentTypeDescription
+                                                    ).FirstOrDefault() ?? "",
                                                      Email = libeyUser.Email,
                                                      FathersLastName = libeyUser.FathersLastName,
                                                      MothersLastName = libeyUser.MothersLastName,
@@ -67,8 +95,23 @@ namespace LibeyTechnicalTestDomain.LibeyUserAggregate.Infrastructure
                                                      Password = libeyUser.Password,
                                                      Phone = libeyUser.Phone,
                                                      UbigeoCode = libeyUser.UbigeoCode,
+                                                     UbigeoDescription = (
+                                                        from ubigeo in _context.Ubigeos
+                                                        where ubigeo.UbigeoCode == libeyUser.UbigeoCode
+                                                        select ubigeo.UbigeoDescription
+                                                    ).FirstOrDefault() ?? "",
                                                      ProvinceCode = libeyUser.UbigeoCode.Substring(0, 4),
+                                                     ProvinceDescription = (
+                                                        from province in _context.Provinces
+                                                        where province.ProvinceCode == libeyUser.UbigeoCode.Substring(0, 4)
+                                                        select province.ProvinceDescription
+                                                    ).FirstOrDefault() ?? "",
                                                      RegionCode = libeyUser.UbigeoCode.Substring(0, 2),
+                                                     RegionDescription = (
+                                                        from region in _context.Regions
+                                                        where region.RegionCode == libeyUser.UbigeoCode.Substring(0, 2)
+                                                        select region.RegionDescription
+                                                    ).FirstOrDefault() ?? "",
                                                  }).ToList();
 
                 if (users.Any()) return users;

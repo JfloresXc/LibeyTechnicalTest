@@ -5,11 +5,15 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { RouterModule } from "@angular/router";
-import { UserModule } from "./User/user/user.module";
+import { UserModule } from "./features/users/users.module";
+import { SharedModule } from "./shared/shared.module";
+import { SidebarComponent } from "./shared/components/sidebar/sidebar.component";
+
 @NgModule({
-	declarations: [AppComponent],
-	imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, RouterModule,HttpClientModule , UserModule],
+	declarations: [AppComponent, SidebarComponent],
+	imports: [
+		BrowserModule, AppRoutingModule, BrowserAnimationsModule, RouterModule, HttpClientModule, UserModule, SharedModule],
 	providers: [],
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,4 +1,5 @@
-﻿using LibeyTechnicalTestDomain.LibeyUserAggregate.Application.Interfaces;
+﻿using LibeyTechnicalTestDomain.LibeyUserAggregate.Application.DTO;
+using LibeyTechnicalTestDomain.LibeyUserAggregate.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibeyTechnicalTestAPI.Controllers.Region
@@ -16,8 +17,16 @@ namespace LibeyTechnicalTestAPI.Controllers.Region
         [HttpGet]
         public IActionResult ListAll()
         {
-            var row = _aggregate.ListAll();
-            return Ok(row);
+            try
+            {
+                List<RegionResponse> rows = _aggregate.ListAll();
+                var response = new ApiResponse<List<RegionResponse>>(rows, "Data retrieved successfully", true);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while retrieving data" + ex.Message);
+            }
         }
     }
 }
